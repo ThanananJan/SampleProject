@@ -1,0 +1,7 @@
+{
+  "DB": {
+    "Type": "sqLite",
+    "Source": "D:\\ProjectSample.db"
+  }
+
+}
