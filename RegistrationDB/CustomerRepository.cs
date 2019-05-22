@@ -24,7 +24,7 @@ namespace RegistrationDB
         {
             custDB.customer.Add(customer);
             custDB.SaveChanges();
-          return custDB.customer.FirstOrDefault(x => x.firstName == customer.firstName && x.lastName == customer.lastName&&x.flag=="A");
+            return customer;
         }
         public Customer Update(Customer customer)
         {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RegistrationContact
 {
-
+    [Serializable]
     public  class Customer :TableBase
     {
         
@@ -31,5 +31,24 @@ namespace RegistrationContact
         public DateTime cDate { get; set; } = DateTime.Now;
         public DateTime mDate { get; set; } = DateTime.Now;
         public string flag { get; set; } = "A";
+
+        public bool Validation(Customer obj)
+        {
+            if (isNull(code) || isNull(firstName) || isNull(lastName) || isNull(password) || isNull(DOB)) return false;
+            else return true;
+        }
+        public bool isNull(string obj)
+        {
+           return String.IsNullOrEmpty(obj);
+        }
+        public bool isNull(DateTime obj)
+        {
+            if (obj == null) return true;
+            else return false;
+        }
+        public bool Validation()
+        {
+            return Validation(this);
+        }
     }
 }

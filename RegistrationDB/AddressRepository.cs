@@ -18,7 +18,7 @@ namespace RegistrationDB
         {
             custDb.address.Add(addr);
             custDb.SaveChanges();
-          return  custDb.address.LastOrDefault();
+            return addr;
         }
         public Address Update(Address addr)
         {

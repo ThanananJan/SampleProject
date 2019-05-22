@@ -37,13 +37,7 @@ namespace Tests
 
             var result = new AddressRepository(new CustomerDbcontext(dbTest)).Create(obj);
 
-            Assert.True(obj.line1 == result.line1
-                && obj.line2 == result.line2
-                && obj.line3 == result.line3
-                && obj.amphur == result.amphur
-                && obj.province == result.province
-                && obj.zipcode == result.zipcode
-                && obj.customer_id == result.customer_id);
+            Assert.True(obj.customer_id>0);
         }
         [Test]
         public void add_address_without_customer_id_should_not_add()

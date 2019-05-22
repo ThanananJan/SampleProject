@@ -21,7 +21,9 @@ namespace RegistrationDB
             if (photo.customer_id <= 0) throw new Exception("customer_id can't be null ");
             if (cusDb.photo.Count(p => p.customer_id == photo.customer_id) > 0)
             {
-                cusDb.photo.Update(photo);
+                var obj = cusDb.photo.First(p => p.customer_id==photo.customer_id && p.flag != statusFlag.Delete);
+                obj.imagebase64 = photo.imagebase64;
+                cusDb.photo.Update(obj);
             }
             else
             {
@@ -29,7 +31,7 @@ namespace RegistrationDB
             }
            
             cusDb.SaveChanges();
-            return cusDb.photo.FirstOrDefault(x => x.customer_id == photo.customer_id&&x.flag==statusFlag.Active);
+            return cusDb.photo.First(x => x.customer_id == photo.customer_id&&x.flag==statusFlag.Active);
         }
         public Photo Delete(int id)
         {

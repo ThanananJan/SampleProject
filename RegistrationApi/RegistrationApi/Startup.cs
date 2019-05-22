@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RegistrationDB;
 
 namespace RegistrationApi
 {
@@ -25,6 +26,12 @@ namespace RegistrationApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<CustomerDbcontext>();
+            services.AddScoped<CustomerRepository>();
+            services.AddScoped<AddressRepository>();
+            services.AddScoped<PhotoRepository>();
+           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

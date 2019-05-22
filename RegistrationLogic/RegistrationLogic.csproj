@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RegistrationContact\RegistrationContact.csproj" />
+    <ProjectReference Include="..\RegistrationDB\RegistrationDB.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,7 +6,7 @@ using RegistrationContact;
 
 namespace Tests
 {
-    public class Tests
+    public class CustomerRepo
     {
         string dbTest;
         [SetUp]
@@ -38,7 +38,7 @@ namespace Tests
 
             var cusRepo = new CustomerRepository(new CustomerDbcontext(dbTest));
             var customer = cusRepo.Create(obj);
-            Assert.True(customer.ziticenID == obj.ziticenID);
+            Assert.True(customer.ziticenID == obj.ziticenID && customer.id >0);
             
         }
         [Test]

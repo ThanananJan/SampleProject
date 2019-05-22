@@ -50,7 +50,7 @@ namespace RegistrationDBTest
 
             var photoRepo = new PhotoRepository(new CustomerDbcontext(dbTest));
             var result = photoRepo.create(obj);
-            Assert.True(result.imagebase64.Contains(obj.imagebase64));
+            Assert.True(result.imagebase64.Equals(obj.imagebase64));
 
         }
         [Test]
