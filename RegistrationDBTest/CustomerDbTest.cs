@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using RegistrationDB;
 using AutoFixture;
+using RegistrationContact;
 
 namespace Tests
 {
@@ -11,13 +12,14 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            dbTest = "D:/SampleProjectTest.db";
+            dbTest = "D:/SampleProjectTestRela.db";
         }
 
         [Test]
         public void customberdb_created (){
            var cusDb = new CustomerDbcontext(dbTest);
-           Assert.IsTrue(cusDb.Database.EnsureCreated());
+           //Assert.IsTrue(cusDb.Database.EnsureCreated());
+           //Assert.IsTrue(cusDb.Database.EnsureDeleted());
         }
         [Test]
         public void customer_can_add_new_customer()
@@ -29,7 +31,9 @@ namespace Tests
                 lastName = "นามสกุลทดสอบ",
                 DOB = new System.DateTime(1990, 1, 1),
                 ziticenID = "1234567891011",
-                Email = "test1@gmail.com"
+                Email = "test1@gmail.com",
+                password = "1234"
+
             };
 
             var cusRepo = new CustomerRepository(new CustomerDbcontext(dbTest));
@@ -64,7 +68,7 @@ namespace Tests
         [Test]
         public void customer_update_should_set_flag_to_be_a()
         {
-            var id = 2;
+            var id = 1;
             var conflag = "U";
             var cusRepo = new CustomerRepository(new CustomerDbcontext(dbTest));
             var obj = cusRepo.GetByID(id);
@@ -82,7 +86,8 @@ namespace Tests
                 lastName = "นามสกุลทดสอบ",
                 DOB = new System.DateTime(1990, 1, 1),
                 ziticenID = "1234567891011",
-                Email = "test2@gmail.com"
+                Email = "test2@gmail.com",
+                password="1234"
             };
 
             var cusRepo = new CustomerRepository(new CustomerDbcontext(dbTest));

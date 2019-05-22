@@ -6,10 +6,11 @@ namespace RegistrationContact
 {
     public interface TableBase
     {
-        string Cuser { get; set; }
-        string MUser { get; set; }
-        DateTime CDate { get; set; }
-        DateTime MDate { get; set; }
+        int id { get; set; }
+        string cUser { get; set; }
+        string mUser { get; set; }
+        DateTime cDate { get; set; }
+        DateTime mDate { get; set; }
         string flag { get; set; }
     }
 }

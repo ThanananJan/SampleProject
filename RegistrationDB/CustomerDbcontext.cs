@@ -14,6 +14,8 @@ namespace RegistrationDB
    public class CustomerDbcontext :DbContext
     {
        public DbSet<Customer> customer { get; set; }
+        public DbSet<Address> address { get; set; }
+        public DbSet<Photo> photo { get; set; }
         dynamic config;
         string dataSource;
         public CustomerDbcontext():base()
@@ -32,10 +34,26 @@ namespace RegistrationDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>(x =>
-            x.Property(a => a.code)
-            .IsRequired()
-            .IsUnicode()
+            {
+                x.Property(a => a.code)
+                .IsRequired();
+            }
             );
+
+
+            modelBuilder.Entity<Photo>()
+              ;
+            
+
+            modelBuilder.Entity<Address>(x =>
+            {
+                x.HasOne(a => a.customer)
+                .WithMany(b => b.address)
+                .HasForeignKey(c => c.customer_id);
+            }
+            );
+
+                       
             base.OnModelCreating(modelBuilder);
         }
     }

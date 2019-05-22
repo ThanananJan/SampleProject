@@ -240,3 +240,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+RegistrationApi/.vs/RegistrationApi/v15/Server/sqlite3/db.lock
