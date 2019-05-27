@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RegistrationContact
 {
-    public class Photo : TableBase
+    public class Photo : ObjectValidate,TableBase
     {
         public int id { get; set; }
 
@@ -16,7 +16,7 @@ namespace RegistrationContact
             get { return getPhoto(); }
             set => content = value;
         }
-        
+        [ForeignKey("id")]
         public int customer_id { get; set; }
         public string cUser { get; set; }
         public string mUser { get; set; }
@@ -29,7 +29,16 @@ namespace RegistrationContact
                  $"data:image/png;base64,{content}";
         }
 
+        public override bool Validation()
+        {
+          return  Validation(this);
 
+        }
 
+        private bool Validation(Photo obj)
+        {
+            if (isNull(obj.content)) return false;
+            else return true;
+        }
     }
 }

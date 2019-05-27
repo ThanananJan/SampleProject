@@ -19,7 +19,7 @@ namespace RegistrationDB
         public Photo create(Photo photo)
         {
             if (photo.customer_id <= 0) throw new Exception("customer_id can't be null ");
-            if (cusDb.photo.Count(p => p.customer_id == photo.customer_id) > 0)
+            if (cusDb.photo.Where(p => p.customer_id == photo.customer_id).Count() > 0)
             {
                 var obj = cusDb.photo.First(p => p.customer_id==photo.customer_id && p.flag != statusFlag.Delete);
                 obj.imagebase64 = photo.imagebase64;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RegistrationContact
 {
-    public class Address : TableBase
+    public class Address : ObjectValidate, TableBase
     {
         public int id { get;set; }
         public string line1 { get; set; }
@@ -27,6 +27,15 @@ namespace RegistrationContact
         public int customer_id { get; set; }
 
         public Customer customer { get; set; }
-      
+        public override bool Validation()
+        {
+          return  Validation(this);
+        }
+
+        private bool Validation(Address obj)
+        {
+            if (obj.zipcode.Length != 5) return false;
+            else return true;
+        }
     }
 }

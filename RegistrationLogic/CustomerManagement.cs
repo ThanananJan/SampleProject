@@ -27,8 +27,8 @@ namespace RegistrationLogic
         {
             if (!obj.Validation()) throw new Exception("Invalid Customer");
             custRepo.Create(obj);
-            AddAddress(obj);
-            AddPhoto(obj);
+            //AddAddress(obj);
+           AddPhoto(obj);
             return obj;
         }
 
@@ -37,7 +37,7 @@ namespace RegistrationLogic
             if (obj.photo != null)
             {
                 obj.photo.customer_id = obj.id;
-                photoRepo.create(obj.photo);
+                photoRepo.Update(obj.photo);
             }
         }
 

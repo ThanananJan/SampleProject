@@ -49,7 +49,7 @@ namespace RegistrationDB
         }
         public Customer GetByCode(string code)
         {
-            return custDB.customer.Where(x => x.code == code).OrderByDescending(x=>x.id).FirstOrDefault();
+            return custDB.customer.Where(x => x.code == code&&x.flag==statusFlag.Active).OrderByDescending(x=>x.id).FirstOrDefault();
         }
     }
 }
